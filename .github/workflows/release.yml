@@ -25,14 +25,18 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install poetry
           poetry install
+          poetry add pyinstaller
 
       - name: Run tests
         run: poetry run pytest -v
 
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
       - name: Build binary
-        run: poetry run pyinstaller -F --add-data python_project_templater/templates:./templates --name python-project-templater python_project_templater/main.py
+        run: poetry run pyinstaller -F --add-data python_project_templater/templates:./templates --name python-project-templater-$RELEASE_VERSION python_project_templater/main.py
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/python-project-templater"
+          artifacts: "dist/python-project-templater-*"
           bodyFile: "CHANGELOG.md"
