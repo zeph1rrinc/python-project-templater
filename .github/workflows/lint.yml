@@ -23,4 +23,4 @@ jobs:
           poetry install
 
       - name: Pylint
-        run: poetry run pylint $(git ls-files '*.py')
+        run: poetry run pylint python_project_templater/*.py
