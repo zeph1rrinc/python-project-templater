@@ -1,3 +1,6 @@
 1.0.0
 
-some changelog
+- Ready stable version of utility
+- Added base template
+- Added fastapi template
+- Added template list

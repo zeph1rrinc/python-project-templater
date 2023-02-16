@@ -39,9 +39,20 @@ def create_project(template: str, project_path: str) -> bool:
 def main():
     """Main function of module"""
     parser = argparse.ArgumentParser(description="create new python project from template")
-    parser.add_argument("-t", '--template', required=True, help='template for project')
-    parser.add_argument("-p", '--project', required=True, help="project path")
+    parser.add_argument("-t", '--template', required=False, help='template for project')
+    parser.add_argument("-p", '--project', required=False, help="project path")
+    parser.add_argument("-ls",
+                        '--templates-list',
+                        required=False,
+                        action="store_true",
+                        help="list of templates"
+                        )
     args = parser.parse_args()
+
+    if args.templates_list:
+        templates = os.listdir(os.path.join(pathlib.Path(__file__).parent.resolve(), "templates"))
+        print(", ".join(templates))
+        return
 
     try:
         project_path = os.path.abspath(args.project)
