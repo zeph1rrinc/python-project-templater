@@ -22,7 +22,7 @@ if config.config_file_name is not None:
 
 import os
 
-from ..fastapi.database.tables import Base
+from fastapi.database.tables import Base
 from dotenv import load_dotenv
 
 target_metadata = Base.metadata

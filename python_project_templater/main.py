@@ -52,6 +52,7 @@ def create_project(template: str, project_path: str) -> bool:
         change_name_in_file("pyproject.toml", template, project_name, 1)
         if "migrations" in os.listdir():
             change_name_in_file(os.path.join("migrations", "env.py"), template, project_name)
+            os.makedirs(os.path.join("migrations", "versions"))
         os.system("git init")
     except FileExistsError as _ex:
         logger.error(_ex)
