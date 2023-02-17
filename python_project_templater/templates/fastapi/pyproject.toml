@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "backend"
+name = "fastapi"
 version = "1.0.0"
 description = ""
 authors = ["Антон Григорьев <grianton535@gmail.com>"]

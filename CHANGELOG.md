@@ -1,6 +1,4 @@
-1.0.0
+1.1.0
 
-- Ready stable version of utility
-- Added base template
-- Added fastapi template
-- Added template list
+- added replacing template name to project name
+- small refactoring
